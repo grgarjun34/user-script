@@ -1,0 +1,43 @@
+Create a file which contains all the users name.
+$ vim user-add.txt
+arjun
+david
+robert
+karan
+kevin
+
+save file and create bash file "user-add.sh"
+
+#!/bin/bash
+for i in `more userlist.txt`
+do
+echo $i
+adduser $i
+done
+
+save file and give so permission
+
+$ chmod +x user-add.sh
+
+Now run the script
+
+$ ./user-add.sh
+
+Now for password and password will be username+123 (arjun123)
+$ vim user-passwd.sh
+
+#!/bin/sh
+for i in `more userlist.txt `
+do
+echo $i
+echo $i"123" | passwd –-stdin "$i"
+echo; echo "User $username’s password changed!"
+done
+
+save the file and give permission
+$ chmod +x user-passwd.sh
+
+Run the script
+
+$ ./user-passwd.sh
+
